@@ -1,13 +1,10 @@
 {
   "axioms": {
-    "licensee":"license",
-    "linguist":"language"
+    "licensee":"license"
   },
   "rules": {
     "all": {
-      "license-file-exists:file-existence": ["error", {"files": ["LICENSE*", "COPYING*"], "nocase": true}],
       "readme-file-exists:file-existence": ["error", {"files": ["README*"], "nocase": true}],
-      "readme-references-license:file-contents": ["error", {"files": ["README*"], "content": "license", "flags": "i"}],
       "ossmeta-file-exists:file-existence": ["error", {"files": ["OSSMETADATA*"], "nocase": true}],
       "code-of-conduct-file-exists:file-existence": ["error", {"files": [
         "CODEOFCONDUCT*", "CODE-OF-CONDUCT*", "CODE_OF_CONDUCT*",
@@ -24,34 +21,12 @@
           "flags": "i",
           "human-readable-content": "email address"
         }
-      ]
+      ],
+      "readme-references-license:file-contents": ["error", {"files": ["README*"], "content": "license", "flags": "i"}],
+      "license-file-exists:file-existence": ["error", {"files": ["LICENSE*", "COPYING*"], "nocase": true}]
     },
     "license=*": {
       "license-detectable-by-licensee": ["error"]
-    },
-    "language=javascript": {
-      "package-metadata-exists:file-existence": ["error", {"files": ["package.json"]}]
-    },
-    "language=ruby": {
-      "package-metadata-exists:file-existence": ["error", {"files": ["Gemfile"]}]
-    },
-    "language=java": {
-      "package-metadata-exists:file-existence": ["error", {"files": ["pom.xml", "build.xml", "build.gradle"]}]
-    },
-    "language=python": {
-      "package-metadata-exists:file-existence": ["error", {"files": ["setup.py", "requirements.txt"]}]
-    },
-    "language=objective-c": {
-      "package-metadata-exists:file-existence": ["error", {"files": ["Cartfile", "Podfile", "*.podspec"]}]
-    },
-    "language=swift": {
-      "package-metadata-exists:file-existence": ["error", {"files": ["Package.swift"]}]
-    },
-    "language=erlang": {
-      "package-metadata-exists:file-existence": ["error", {"files": ["rebar.config"]}]
-    },
-    "language=elixir": {
-      "package-metadata-exists:file-existence": ["error", {"files": ["mix.exs"]}]
     }
   }
 }
