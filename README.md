@@ -17,6 +17,8 @@ I recommend doing this in a directory you use only for this purpose (I used `~/W
 
 If you have many large repositories, that may have taken some time.
 
+Before running repolinter, copy the `repolint.json` file into the `~/Working/` directory (or your Home directory).
+
 You can generate a report for each of the cloned repos by running the following one-liner from within your local copy of `repolinter`:
 
 `echo  > results.txt;for i in ~/Working/*/;do node bin/repolinter.js "$i" >> results.txt; echo  >> results.txt;done;cat results.txt`
