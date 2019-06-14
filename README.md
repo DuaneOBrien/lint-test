@@ -13,6 +13,10 @@ If you want to lint all your org's repos locally, you can iterate over the list 
 
 `curl -s https://YOURGITHUBID:@api.github.com/orgs/YOURGITHUBORG/repos?per_page=200 | jq .[].ssh_url | xargs -n 1 git clone`
 
+If you want to filter out forks and archived repositories, you can use this one-liner:
+
+`curl -s https://YOURGITHUBID:@api.github.com/orgs/YOURGITHUBORG/repos?per_page=200&type=sources&sort=full_name | jq '.[] | select(.archived == false) | .ssh_url' | xargs -n 1 git clone`
+
 I recommend doing this in a directory you use only for this purpose (I used `~/Working/`)
 
 If you have many large repositories, that may have taken some time.
@@ -21,7 +25,7 @@ Before running repolinter, copy the `repolint.json` file into the `~/Working/` d
 
 You can generate a report for each of the cloned repos by running the following one-liner from within your local copy of `repolinter`:
 
-`echo  > results.txt;for i in ~/Working/*/;do node bin/repolinter.js "$i" >> results.txt; echo  >> results.txt;done;cat results.txt`
+`echo  >> results.txt;for i in ~/Working/*/;do node bin/repolinter.js "$i" >> results.txt; echo  >> results.txt;done;cat results.txt`
 
 (Note, this assumes you've cloned everything into `~/Working/` like I did)
 
