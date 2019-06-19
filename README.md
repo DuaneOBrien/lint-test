@@ -11,11 +11,11 @@ This is a test project for evaluating custom rules for [Repolinter](https://gith
 
 If you want to lint all your org's repos locally, you can iterate over the list of repos and clone them using the following one-liner:
 
-`curl -s https://YOURGITHUBID:@api.github.com/orgs/YOURGITHUBORG/repos?per_page=200 | jq .[].ssh_url | xargs -n 1 git clone`
+`curl -s 'https://YOURGITHUBID:@api.github.com/orgs/YOURGITHUBORG/repos?per_page=200' | jq .[].ssh_url | xargs -n 1 git clone`
 
 If you want to filter out forks and archived repositories, you can use this one-liner:
 
-`curl -s https://YOURGITHUBID:@api.github.com/orgs/YOURGITHUBORG/repos?per_page=200&type=sources&sort=full_name | jq '.[] | select(.archived == false) | .ssh_url' | xargs -n 1 git clone`
+`curl -s 'https://YOURGITHUBID:@api.github.com/orgs/YOURGITHUBORG/repos?per_page=200&type=sources&sort=full_name' | jq '.[] | select(.archived == false) | .ssh_url' | xargs -n 1 git clone`
 
 I recommend doing this in a directory you use only for this purpose (I used `~/Working/`)
 
