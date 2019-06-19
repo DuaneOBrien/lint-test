@@ -1,6 +1,6 @@
 ## Repolinter Test Project
 
-![NetflixOSS Lifecycle](https://img.shields.io/osslifecycle/duaneobrien/lint-test.svg)
+![OSS Lifecycle](https://img.shields.io/osslifecycle/duaneobrien/lint-test.svg)
 
 This is a test project for evaluating custom rules for [Repolinter](https://github.com/todogroup/repolinter/)
 
