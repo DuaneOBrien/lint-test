@@ -29,6 +29,10 @@ You can generate a report for each of the cloned repos by running the following 
 
 (Note, this assumes you've cloned everything into `~/Working/` like I did)
 
+If you've put your code in ~/Code/, and you have a ~/Working/ directory for cloning, you can do this all in one line like this:
+
+`cd ~/Working/ ; rm -rf * ; curl -s 'https://YOURUSERNAME:@api.github.com/orgs/YOURORG/repos?per_page=200&type=sources&sort=full_name' | jq '.[] | select(.archived == false) | .ssh_url' | xargs -n 1 git clone ; cd ~/Code/repolinter/ ; echo > results.txt;for i in ~/Working/*/;do node bin/repolinter.js "$i" >> results.txt; echo >> results.txt;done;cat results.txt` 
+
 ## Credits
 
 I learned the curl one-liner from [This Article](https://medium.com/@kevinsimper/how-to-clone-all-repositories-in-a-github-organization-8ccc6c4bd9df) by Kevin Simpler
